@@ -1,16 +1,23 @@
-const React = require('react')
-const ReactDOM = require('react-dom')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const data = { name: 'humans' }
+import App from './App'
+import registerServiceWorker from '../public/registerServiceWorker'
 
-function helloTemplate (props) {
-  return (
-    <div>hello {props.name}</div>
-  )
-}
+// const React = require('react')
+// const ReactDOM = require('react-dom')
 
-const view = helloTemplate(data)
+// const data = { name: 'world' }
 
-const placeToMount = document.getElementById('root')
+// function helloTemplate (props) {
+//   return (
+//     <div>hello {props.name}</div>
+//   )
+// }
+ReactDOM.render(<App />, document.getElementById('root'))
+registerServiceWorker()
+// const view = helloTemplate(data)
 
-ReactDOM.render(view, placeToMount)
+// const placeToMount = document.getElementById('root')
+
+// ReactDOM.render(view, placeToMount)
