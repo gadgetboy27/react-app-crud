@@ -19,21 +19,23 @@ class App extends Component {
 
   fSubmit = (e) => {
     e.preventDefault()
-    console.log('try')
+    // console.log('try')
 
     let datas = this.state.datas
     let name = this.refs.name.value
     let address = this.refs.address.value
+    let comments = this.refs.comments.value
 
     if (this.state.act === 0) { // new
       let data = {
-        name, address
+        name, address, comments
       }
       datas.push(data)
     } else { // update
       let index = this.state.index
       datas[index].name = name
       datas[index].address = address
+      datas[index].comments = comments
     }
 
     this.setState({
@@ -60,6 +62,7 @@ class App extends Component {
     let data = this.state.datas[i]
     this.refs.name.value = data.name
     this.refs.address.value = data.address
+    this.refs.comments.value = data.comments
 
     this.setState({
       act: 1,
@@ -77,12 +80,14 @@ class App extends Component {
         <form ref="myForm" className="myForm">
           <input type="text" ref="name" placeholder="your name" className="formField" />
           <input type="text" ref="address" placeholder="your address" className="formField" />
+          <input type="text" ref="comments" placeholder="your comments" className="formField" />
+
           <button onClick={(e) => this.fSubmit(e)} className="myButton">submit </button>
         </form>
         <pre>
           {datas.map((data, i) =>
             <li key={i} className="myList">
-              {i + 1}. {data.name}, {data.address}
+              {i + 1}. {data.name}, {data.address}, {data.comments}
               <button onClick={() => this.fRemove(i)} className="myListButton">remove </button>
               <button onClick={() => this.fEdit(i)} className="myListButton">edit </button>
             </li>
