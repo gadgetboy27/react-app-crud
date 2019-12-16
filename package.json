@@ -1,37 +1,20 @@
 {
-  "name": "react-minimal",
-  "version": "0.1.0",
-  "description": "the essence of a react component",
-  "repository": "https://github.com/dev-academy-challenges/react-minimal.git",
+  "name": "react-app-crud",
+  "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server & webpack --watch"
+    "start": "node index.js"
   },
-  "babel": {
-    "presets": [
-      "@babel/preset-env",
-      "@babel/preset-react"
-    ],
-    "plugins": [
-      "@babel/plugin-proposal-class-properties"
-    ]
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gadgetboy27/react-app-crud.git"
   },
   "keywords": [],
-  "author": "EDA",
+  "author": "",
   "license": "ISC",
-  "dependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/plugin-proposal-class-properties": "^7.4.0",
-    "express": "^4.16.4"
+  "bugs": {
+    "url": "https://github.com/gadgetboy27/react-app-crud/issues"
   },
-  "devDependencies": {
-    "@babel/core": "^7.4.3",
-    "@babel/preset-env": "^7.4.3",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "react": "^16.8.6",
-    "react-dom": "^16.8.6",
-    "webpack": "^4.29.6",
-    "webpack-cli": "^3.3.0"
-  }
+  "homepage": "https://github.com/gadgetboy27/react-app-crud#readme"
 }
