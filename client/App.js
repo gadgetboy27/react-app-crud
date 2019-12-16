@@ -1,6 +1,5 @@
 /* eslint-disable react/no-string-refs */
 import React, { Component } from 'react'
-// import '../main.css'
 
 class App extends Component {
   constructor (props) {
@@ -19,22 +18,21 @@ class App extends Component {
 
   fSubmit = (e) => {
     e.preventDefault()
-    // console.log('try')
 
     let datas = this.state.datas
     let name = this.refs.name.value
-    let address = this.refs.address.value
+    let nhiNumber = this.refs.nhiNumber.value
     let comments = this.refs.comments.value
 
     if (this.state.act === 0) { // new
       let data = {
-        name, address, comments
+        name, nhiNumber, comments
       }
       datas.push(data)
     } else { // update
       let index = this.state.index
       datas[index].name = name
-      datas[index].address = address
+      datas[index].nhiNumber = nhiNumber
       datas[index].comments = comments
     }
 
@@ -42,7 +40,8 @@ class App extends Component {
       datas: datas,
       act: 0
     })
-
+    localStorage.setItem('datas', JSON.stringify(datas))
+    // console.log('datas')
     this.refs.myForm.reset()
     this.refs.name.focus()
   }
@@ -53,7 +52,7 @@ class App extends Component {
     this.setState({
       datas: datas
     })
-
+    datas = localStorage.removeItem(i)
     this.refs.myForm.reset()
     this.refs.name.focus()
   }
@@ -61,14 +60,15 @@ class App extends Component {
   fEdit = (i) => {
     let data = this.state.datas[i]
     this.refs.name.value = data.name
-    this.refs.address.value = data.address
+    this.refs.nhiNumber.value = data.nhiNumber
     this.refs.comments.value = data.comments
 
     this.setState({
       act: 1,
       index: i
     })
-
+    // data = JSON.parse(localStorage.getItem('data'))
+    // console.log(data)
     this.refs.name.focus()
   }
 
@@ -76,18 +76,18 @@ class App extends Component {
     let datas = this.state.datas
     return (
       <div className="App">
-        <h2>{this.state.title}</h2>
+        <h1>{this.state.title}</h1>
         <form ref="myForm" className="myForm">
-          <input type="text" ref="name" placeholder="your name" className="formField" />
-          <input type="text" ref="address" placeholder="your address" className="formField" />
-          <input type="text" ref="comments" placeholder="your comments" className="formField" />
+          <input type="text" ref="name" placeholder="patient name" className="formField" />
+          <input type="text" ref="nhiNumber" placeholder="patient NHI" className="formField" />
+          <input type="text" ref="comments" placeholder="patient comments" className="formField" />
 
-          <button onClick={(e) => this.fSubmit(e)} className="myButton">submit </button>
+          <button onClick={(e) => this.fSubmit(e)} className="myButton">Submit </button>
         </form>
         <pre>
           {datas.map((data, i) =>
             <li key={i} className="myList">
-              {i + 1}. {data.name}, {data.address}, {data.comments}
+              {i + 1}. {data.name}, {data.nhiNumber}, {data.comments}
               <button onClick={() => this.fRemove(i)} className="myListButton">remove </button>
               <button onClick={() => this.fEdit(i)} className="myListButton">edit </button>
             </li>
